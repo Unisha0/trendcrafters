@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TrendCrafters - Digital Marketing Agency{% endblock %}</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/components.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/responsive.css' %}">
+    
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="font-sans bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-5">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center space-x-2">
+                    <a href="{% url 'index' %}">
+                        <img src="https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6FdmN72fLXlSO27gtJBnqy9Dd8acQiuIW3YHx" alt="TrendCrafters Logo" class="h-24 w-30" loading="lazy">
+                    </a>
+                </div>
+                <!-- Desktop menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{% url 'index' %}" class="nav-link">Home</a>
+                    <a href="{% url 'about' %}" class="nav-link">About</a>
+                    <!-- Services Dropdown -->
+                   <div class="relative group">
+    <a href="{% url 'services' %}" 
+       class="flex items-center px-3 py-2 nav-link">
+        Services
+        <svg class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" 
+             fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+    </a>
+    
+    <!-- Invisible gap to maintain hover state -->
+    <div class="absolute left-0 top-full w-full h-3 bg-transparent"></div>
+    
+    <div class="absolute left-0 top-full mt-1 hidden group-hover:block bg-white shadow-xl rounded-md w-48 z-50 border border-gray-100">
+        <a href="{% url 'photo_shoot' %}" class="block px-4 py-3 text-sm text-gray-700 hover:bg-orange-400 hover:text-white transition-colors duration-200">Video & Photoshoot</a>
+        <a href="{% url 'production' %}" class="block px-4 py-3 text-sm text-gray-700 hover:bg-orange-400 hover:text-white transition-colors duration-200">Production</a>
+        <a href="{% url 'digital_marketing' %}" class="block px-4 py-3 text-sm text-gray-700 hover:bg-orange-400 hover:text-white transition-colors duration-200">Digital Marketing</a>
+        <a href="{% url 'brand_campaign' %}" class="block px-4 py-3 text-sm text-gray-700 hover:bg-orange-400 hover:text-white transition-colors duration-200">Brand Campaigns</a>
+        <a href="{% url 'web_development' %}" class="block px-4 py-3 text-sm text-gray-700 hover:bg-orange-400 hover:text-white transition-colors duration-200">Web Development</a>
+    </div>
+</div>
+                    <a href="{% url 'work' %}" class="nav-link">Work</a>
+                    <a href="{% url 'contact' %}" class="px-4 py-2 rounded-md bg-primary text-black hover:text-orange-500 font-bold hover:bg-primary/90 transition-colors">Contact Us</a>
+                    <!-- Social icons -->
+                    <a href="https://www.tiktok.com/@trend_.crafters?is_from_webapp=1&sender_device=pc" target="_blank" class="ml-4 text-gray-400 hover:text-primary"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/trend._crafters/" target="_blank" class="text-gray-400 hover:text-primary"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1BTcpCj6Y6/" target="_blank" class="text-gray-400 hover:text-primary"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/in/trend-crafters-8a610035a/" target="_blank" class="text-gray-400 hover:text-primary"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="mobile-menu-button">
+                        <i class="fas fa-bars text-gray-600 text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+       <!-- Mobile menu -->
+<div class="mobile-menu md:hidden">
+  <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
+    <a href="{% url 'index' %}" class="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md">Home</a>
+    <a href="{% url 'about' %}" class="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md">About</a>
+    
+    <!-- Services Dropdown (Mobile) -->
+    <div class="border-t border-gray-200">
+      <button id="mobile-services-btn" 
+              class="w-full flex justify-between items-center px-3 py-2 text-gray-700 font-medium hover:bg-gray-50 rounded-md focus:outline-none">
+        <span>Services</span>
+        <svg id="mobile-services-icon" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      <!-- Dropdown Menu -->
+      <div id="mobile-services-menu" 
+           class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex flex-col space-y-1 mt-1 pl-6">
+        <!-- Added individual service links -->
+        <a href="{% url 'services' %}" class="block px-3 py-2 text-gray-600 hover:bg-orange-100 rounded-md text-sm font-semibold">All Services</a>
+        <a href="{% url 'photo_shoot' %}" class="block px-3 py-2 text-gray-600 hover:bg-orange-100 rounded-md text-sm">Video & Photoshoot</a>
+        <a href="{% url 'production' %}" class="block px-3 py-2 text-gray-600 hover:bg-orange-100 rounded-md text-sm">Production</a>
+        <a href="{% url 'digital_marketing' %}" class="block px-3 py-2 text-gray-600 hover:bg-orange-100 rounded-md text-sm">Digital Marketing</a>
+        <a href="{% url 'brand_campaign' %}" class="block px-3 py-2 text-gray-600 hover:bg-orange-100 rounded-md text-sm">Brand Campaigns</a>
+        <a href="{% url 'web_development' %}" class="block px-3 py-2 text-gray-600 hover:bg-orange-100 rounded-md text-sm">Web Development</a>
+      </div>
+    </div>
+
+    <a href="{% url 'work' %}" class="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md">Work</a>
+    <a href="{% url 'contact' %}" class="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md">Contact Us</a>
+    
+    <div class="flex space-x-4 mt-2 px-3">
+      <a href="https://www.tiktok.com/@trend_.crafters?is_from_webapp=1&sender_device=pc" target="_blank" class="text-gray-400 hover:text-primary"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/trend._crafters/" target="_blank" class="text-gray-400 hover:text-primary"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/share/1BTcpCj6Y6/" target="_blank" class="text-gray-400 hover:text-primary"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.linkedin.com/in/trend-crafters-8a610035a/" target="_blank" class="text-gray-400 hover:text-primary"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <img src="https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6La36rT9Pw8R4Uv5dbSNVJy1oITX6eKmFkpan" alt="TrendCrafters Logo" class="h-30 w-40 mb-2" loading="lazy">
+                    <p class="text-gray-400">Crafting Stories, Creating Impact.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.tiktok.com/@trend_.crafters?is_from_webapp=1&sender_device=pc" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/trend._crafters/" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/1BTcpCj6Y6/" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/trend-crafters-8a610035a/" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <a href="{% url 'services' %}">Services</a>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="{% url 'digital_marketing' %}" class="hover:text-white">Digital Marketing</a></li>
+                        <li><a href="{% url 'production' %}" class="hover:text-white">Production</a></li>
+                        <li><a href="{% url 'photo_shoot' %}" class="hover:text-white">Photo & Video Shoot</a></li>
+                        <li><a href="{% url 'brand_campaign' %}" class="hover:text-white">Brand Campaigns</a></li>
+                        <li><a href="{% url 'web_development' %}" class="hover:text-white">Web Development</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="{% url 'about' %}" class="hover:text-white">About Us</a></li>
+                        <li><a href="{% url 'work' %}" class="hover:text-white">Our Work</a></li>
+                        <li><a href="{% url 'contact' %}" class="hover:text-white">Let's Connect</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> <a href="https://www.google.com/maps/place/Trend+Crafters,+Tempo+park,+Lalitpur+44600/@27.6537731,85.3491453,17z/data=!4m6!3m5!1s0x48bcab1a0c5ce29f:0xafc0486e73a4eb9d!8m2!3d27.6537731!4d85.3491453!16s%2Fg%2F11x5td3w51?utm_campaign=ml-ardi-airpe&g_ep=Eg1tbF8yMDI1MTAwOF8wIOC7DCoASAJQAQ%3D%3D" target="_blank">TempoPark, Gwarko, Lalitpur</a></li>
+                        <li><i class="fas fa-phone mr-2"></i> <a href="tel:9863998413">9863998413</a></li>
+                        <li><i class="fas fa-user mr-2"></i> Saksham Karki - CEO</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; {% now "Y" %} TrendCrafters. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    {% load static %}
+    <script src="{% static 'main/js/main.js' %}"></script>
+    <script src="{% static 'main/js/animations.js' %}"></script>
+    <script src="{% static 'main/js/mobile.js' %}"></script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

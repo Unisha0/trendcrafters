@@ -1,0 +1,119 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Contact Us - TrendCrafters{% endblock %}
+{% block content %}
+
+<section class="min-h-screen relative bg-gray-900 flex flex-col items-center justify-start pt-24 pb-20 overflow-hidden">
+
+  <!-- Background Map (Full Page) -->
+  <div class="absolute inset-0">
+    <img 
+      src="https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6NgxH976sM2p4P8Sxj0BqvXWeRDIwmTHCtiJz" 
+      alt="Background Map" 
+      class="w-full h-full object-cover opacity-90"
+      style="filter: grayscale(20%) brightness(90%);" loading="lazy">
+  </div>
+
+  <!-- Dark Overlay -->
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+  <!-- Heading Section -->
+  <div class="relative z-20 text-center px-4 mb-12">
+    <h1 class="text-3xl md:text-5xl font-bold mb-3 bg-gradient-to-r from-[#FF6B6B] via-[#FFD93D] to-[#6BCB77] text-transparent bg-clip-text">
+      Get in Touch
+    </h1>
+    <p class="text-gray-300 text-base md:text-lg max-w-2xl mx-auto">
+      Have a question or want to work together? Let's talk!
+    </p>
+  </div>
+
+
+
+  <!-- Contact Form Section -->
+  <div class="relative z-20 w-11/12 sm:w-10/12 lg:w-9/12 grid grid-cols-1 md:grid-cols-2 gap-8 rounded-2xl overflow-hidden shadow-2xl mx-auto">
+
+    <!-- Left Side (Blank / for background visibility) -->
+    <div class="hidden md:block bg-transparent"></div>
+
+    <!-- Right Side (Contact Form) -->
+    <div class="glass text-white px-6 py-8 md:py-10 border border-gray-700 rounded-2xl shadow-xl">
+      
+      {% if messages %}
+        {% for message in messages %}
+          <div class="mb-6 p-4 rounded-lg {% if message.tags == 'success' %}bg-green-900 bg-opacity-50 text-green-200{% else %}bg-red-900 bg-opacity-50 text-red-200{% endif %} border {% if message.tags == 'success' %}border-green-700{% else %}border-red-700{% endif %}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      <h3 class="uppercase tracking-wide font-bold text-gray-300 mb-6 text-sm md:text-base">Send us a Message</h3>
+      
+      <form method="POST" class="space-y-5">
+        {% csrf_token %}
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- Name -->
+          <div>
+            <input 
+              type="text" 
+              name="name" 
+              placeholder="Name" 
+              class="w-full bg-transparent border-b border-gray-600 focus:border-[#FFD93D] outline-none py-2 text-white placeholder-gray-400 text-sm md:text-base transition-colors" 
+              required>
+          </div>
+          
+          <!-- Email -->
+          <div>
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="E-mail" 
+              class="w-full bg-transparent border-b border-gray-600 focus:border-[#FFD93D] outline-none py-2 text-white placeholder-gray-400 text-sm md:text-base transition-colors" 
+              required>
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div>
+          <input 
+            type="tel" 
+            name="phone" 
+            placeholder="Phone" 
+            class="w-full bg-transparent border-b border-gray-600 focus:border-[#FFD93D] outline-none py-2 text-white placeholder-gray-400 text-sm md:text-base transition-colors">
+        </div>
+
+        <!-- Message -->
+        <div>
+          <textarea 
+            name="message" 
+            placeholder="Message" 
+            rows="4" 
+            class="w-full bg-transparent border-b border-gray-600 focus:border-[#FFD93D] outline-none py-2 resize-none text-white placeholder-gray-400 text-sm md:text-base transition-colors"
+            required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button 
+          type="submit"
+          class="w-full bg-gradient-to-r from-[#FF6B6B] via-[#FFD93D] to-[#6BCB77] text-gray-900 font-semibold px-6 py-3 rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 text-sm md:text-base">
+          <span>SEND MESSAGE</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- View Us on Map Button -->
+  <a 
+    href="https://www.google.com/maps/place/Trend+Crafters,+Tempo+park,+Lalitpur+44600/"
+    target="_blank"
+    class="mt-12 z-20 glass text-white px-5 py-3 rounded-full hover:bg-gray-800 transition-all flex items-center space-x-2 text-sm md:text-base border border-gray-700"
+  >
+    <i class="fa-solid fa-location-dot"></i>
+    <span>View Us on Map</span>
+  </a>
+
+</section>
+
+{% endblock %}
