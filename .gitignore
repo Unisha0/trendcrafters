@@ -54,7 +54,3 @@ Thumbs.db
 *.webm
 *.mpeg
 *.mpg   
-
-# Archives
-trendcrafters/settings.py
-secrets.json
