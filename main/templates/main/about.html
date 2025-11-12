@@ -5,17 +5,17 @@
 {% block content %}
 
 <!-- Hero Section -->
-<section class="relative py-medium bg-gradient-to-b from-gray-900 via-gray-800 to-black overflow-hidden hero-mobile">
+<section class="relative py-12 sm:py-16 md:py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-black overflow-hidden hero-mobile">
   <!-- Floating Gradients -->
-  <div class="absolute top-10 left-10 w-96 h-96 bg-gradient-to-r from-orange-500/30 to-red-500/30 blur-3xl opacity-30 animate-float"></div>
-  <div class="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-r from-red-500/20 to-orange-500/20 blur-3xl opacity-30 animate-float" style="animation-delay: 3s;"></div>
+  <div class="absolute top-10 left-10 w-72 sm:w-96 h-72 sm:h-96 bg-gradient-to-r from-orange-500/30 to-red-500/30 blur-3xl opacity-30 animate-float"></div>
+  <div class="absolute bottom-10 right-10 w-72 sm:w-96 h-72 sm:h-96 bg-gradient-to-r from-red-500/20 to-orange-500/20 blur-3xl opacity-30 animate-float" style="animation-delay: 3s;"></div>
 
-  <div class="content-container pt-20">
+  <div class="content-container pt-20 px-4 sm:px-6 lg:px-12">
     <div class="max-w-3xl mx-auto text-center" data-aos="fade-up" data-aos-duration="1000">
-      <h1 class="text-3xl font-bold gradient-text mb-5">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-5">
         We Craft Digital Experiences
       </h1>
-      <p class="text-gray-300 text-lg leading-relaxed">
+      <p class="text-gray-300 text-lg sm:text-xl leading-relaxed">
         At <span class="text-orange-400 font-semibold">TrendCrafters</span>, we blend creativity, strategy, and innovation to tell stories that inspire. 
         From concept to creation, our work helps brands make a mark in today's fast-moving digital landscape.
       </p>
@@ -23,14 +23,14 @@
   </div>
 </section>
 
-<!-- About Overview -->
-<section class="py-compact bg-gradient-to-b from-black via-gray-900 to-gray-800 relative overflow-hidden">
-  <div class="content-container grid md:grid-cols-2 gap-8 items-center">
-    
+<!-- About Overview + Video Section -->
+<section class="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-black via-gray-900 to-gray-800 relative overflow-hidden">
+  <div class="content-container px-4 sm:px-6 lg:px-12 grid md:grid-cols-2 gap-3 items-center">
+
     <!-- Text Content -->
-    <div data-aos="fade-right">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">About Us</h2>
-      <p class="text-gray-400 mb-6 ">
+    <div data-aos="fade-right" class="order-1 md:order-1">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">About Us</h2>
+      <p class="text-gray-400 mb-6">
         <strong>TrendCrafters</strong> is a dynamic broadcasting and media production company that transforms ideas into powerful visual stories. 
         We specialize in <strong>digital marketing</strong>, <strong>brand storytelling</strong>, <strong>video production</strong>, and <strong>creative visual strategy</strong>
         helping brands build genuine connections with their audience through engaging content and memorable campaigns.
@@ -50,38 +50,58 @@
 
       <p class="text-gray-400 text-justify">
         At <strong>TrendCrafters</strong>, we believe every brand has a story worth telling. 
-        Our mission is to <span class="text-orange-400 font-semibold">craft that story into a lasting experience</span> , one that inspires, informs, and connects. 
+        Our mission is to <span class="text-orange-400 font-semibold">craft that story into a lasting experience</span>, one that inspires, informs, and connects. 
         Whether you're launching a new product, redefining your identity, or scaling your digital presence, we're here to make every frame count.
       </p>
     </div>
 
     <!-- Video Section -->
-    <div class="relative video-parent" data-aos="fade-left">
-      <div class="absolute -inset-4 bg-gradient-to-tr from-orange-500/20 to-red-500/20 blur-3xl rounded-lg animate-float"></div>
-
-      <div class="relative rounded-lg transform hover:scale-105 transition-transform duration-700 video-container-mobile">
-       <video 
-    src="https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6UMLGp2xXc4S3JAYDj8s9ECdiLbhm1BG25rxg" 
-    controls
-    autoplay
-    loop
-    playsinline
-    class="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] object-cover rounded-lg" loading="lazy">
-    Your browser does not support the video tag.
-</video>
+    <div class="relative order-2 md:order-2 w-full" data-aos="fade-left">
+      <div class="relative rounded-lg transform hover:scale-105 transition-transform duration-700 overflow-hidden w-[800px] max-w-full mx-auto">
+        <video 
+          id="scrollVideo"
+          src="https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6UMLGp2xXc4S3JAYDj8s9ECdiLbhm1BG25rxg" 
+          autoplay
+          loop
+          playsinline
+          controls
+          class="w-[600px] h-[700px] max-h-[80vh] sm:max-h-[70vh] md:max-h-[60vh] object-cover rounded-lg"
+          loading="lazy">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
+
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const video = document.getElementById("scrollVideo");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play();   // Play when visible
+          } else {
+            video.pause();  // Pause when not visible
+          }
+        });
+      }, { threshold: 0.5 });
+
+      observer.observe(video);
+    });
+  </script>
 </section>
 
 <!-- CEO Section -->
-<section class="ceo-section py-medium">
-  <div class="content-container">
-    <div class="grid md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+<section class="ceo-section py-12 sm:py-16 md:py-20 bg-gray-900">
+  <div class="content-container px-4 sm:px-6 lg:px-12">
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+
       <!-- Text Content -->
-      <div class="ceo-text flex flex-col justify-center" data-aos="fade-right">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Message from Our CEO</h2>
-        <div class="ceo-quote text-gray-300 text-justify space-y-4 pl-4">
+      <div class="ceo-text flex flex-col justify-center order-1 md:order-1" data-aos="fade-right">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">Message from Our CEO</h2>
+        <div class="ceo-quote text-gray-300 text-justify space-y-3 sm:space-y-4">
           <p>
             At TrendCrafters, we don't just follow trends, we create them.
             Our journey began with a single vision: to redefine how brands connect, grow, and inspire in the digital era.
@@ -96,31 +116,34 @@
             This is just the beginning. The world is moving fast, and we're here to move faster, crafting trends that define the future.
           </p>
         </div>
-        <div class="mt-2 mb-5">
-          <p class="text-orange-400 font-semibold text-lg">— Saksham Karki</p>
-          <p class="text-gray-400">Founder & CEO, TrendCrafters</p>
+        <div class="mt-4 sm:mt-6">
+          <p class="text-orange-400 font-semibold text-base sm:text-lg">— Saksham Karki</p>
+          <p class="text-gray-400 text-sm sm:text-base">Founder & CEO, TrendCrafters</p>
         </div>
       </div>
 
       <!-- CEO Image -->
-      <div class="relative flex flex-col justify-center" data-aos="fade-left" data-aos-delay="200">
+      <div class="relative flex flex-col justify-center items-center mt-6 md:mt-0 order-2 md:order-2" data-aos="fade-left" data-aos-delay="200">
+        <!-- Background Gradient -->
         <div class="absolute -inset-4 bg-gradient-to-tr from-orange-500/20 to-red-500/20 blur-3xl rounded-lg animate-float"></div>
-        
-        <div class="relative rounded-lg transform hover:scale-105 transition-transform duration-700">
+
+        <!-- Image -->
+        <div class="relative rounded-lg transform hover:scale-105 transition-transform duration-700 overflow-hidden w-full max-w-[1000px]">
           <img 
             src="https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6pNaF1T8sT2fJSUNuCrFDORIybgi6t7Q3q1xB" 
             alt="Saksham Karki - Founder & CEO of TrendCrafters" 
-            class="ceo-image lg:w-full md:w-[400px] sm:w-[400px] h-[350px] sm:h-[400px] md:h-[450px] lg:h-[450px] object-cover rounded-lg"
+            class="w-[700px] h-[400px] sm:h-[350px] md:h-[400px] lg:h-[450px] object-cover rounded-lg"
             loading="lazy"
           >
         </div>
-        
+
         <!-- Name below the image -->
         <div class="mt-4 text-center">
-          <p class="text-white font-semibold text-lg">Saksham Karki</p>
-          <p class="text-gray-400 text-sm">Founder & CEO</p>
+          <p class="text-white font-semibold text-base sm:text-lg">Saksham Karki</p>
+          <p class="text-gray-400 text-sm sm:text-base">Founder & CEO</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>

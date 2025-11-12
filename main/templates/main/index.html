@@ -3,88 +3,85 @@
  {% block title %}TrendCrafters{% endblock %}
 {% block content %}
 
-<!-- Hero Section -->
-<section class="min-h-screen flex items-center py-medium bg-gray-900 relative overflow-hidden" id="hero">
-    <!-- Animated background elements -->
-    <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-orange-500/20 to-transparent rounded-full blur-3xl"></div>
-        <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-orange-600/20 to-transparent rounded-full blur-3xl"></div>
+<section class="flex items-center py-6 sm:py-8 md:py-12 lg:py-16 bg-gray-900 relative overflow-hidden" id="hero">
+    <!-- Background gradients -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -right-40 w-72 h-72 sm:w-80 sm:h-80 bg-gradient-to-br from-orange-500/20 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 -left-40 w-72 h-72 sm:w-80 sm:h-80 bg-gradient-to-tr from-orange-600/20 to-transparent rounded-full blur-3xl"></div>
     </div>
-    
-    <div class="content-container relative">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6 text-center lg:text-left" data-aos="fade-up">
-                <div class="space-y-4">
-                    <h2 class="text-orange-500 pt-10 font-semibold tracking-wide uppercase">Welcome to TrendCrafters</h2>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                        Crafting Stories,<br>
-                        <span class="gradient-text">
-                            Creating Impact.
-                        </span>
-                    </h1>
-                    <p class="text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 ">
-                        We transform your brand's vision into compelling digital experiences that resonate with your audience.
-                    </p>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <a href="{% url 'contact' %}" class="btn-primary">
+
+    <div class="relative px-4 sm:px-6 lg:px-12 w-full max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 pt-20 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
+            
+            <!-- Text -->
+            <div class="space-y-4 sm:space-y-6 text-center lg:text-left">
+                <h2 class="text-orange-500 font-semibold tracking-wide uppercase">Welcome to TrendCrafters</h2>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-snug">
+                    Crafting Stories,<br>
+                    <span class="gradient-text">Creating Impact.</span>
+                </h1>
+                <p class="text-base sm:text-lg text-gray-400 max-w-lg mx-auto lg:mx-0">
+                    We transform your brand's vision into compelling digital experiences that resonate with your audience.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mt-4">
+                    <a href="{% url 'contact' %}" class="btn-primary px-5 py-2 sm:px-6 sm:py-3 bg-orange-500 text-white rounded-lg font-medium hover:bg-orange-600 transition-colors">
                         Start Your Project
                     </a>
-                    <a href="{% url 'work' %}" class="btn-secondary">
+                    <a href="{% url 'contact' %}" class="btn-secondary px-5 py-2 sm:px-6 sm:py-3 bg-gray-800 text-white rounded-lg font-medium border border-gray-700 hover:bg-gray-700 transition-colors">
                         View Our Work
                     </a>
                 </div>
 
                 <!-- Key Services -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 text-center">
-                    <div class="p-4 rounded-lg bg-gray-800/50 backdrop-blur-sm">
-                        <i class="fas fa-video text-2xl text-orange-500 mb-2"></i>
-                        <p class="text-sm text-gray-300">Broadcasting</p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mt-6 sm:mt-8 text-center">
+                    <div class="p-2 sm:p-3 rounded-lg bg-gray-800/50 backdrop-blur-sm">
+                        <i class="fas fa-video text-lg sm:text-xl text-orange-500 mb-1 sm:mb-2"></i>
+                        <p class="text-xs sm:text-sm text-gray-300">Broadcasting</p>
                     </div>
-                    <div class="p-4 rounded-lg bg-gray-800/50 backdrop-blur-sm">
-                        <i class="fas fa-camera text-2xl text-orange-500 mb-2"></i>
-                        <p class="text-sm text-gray-300">Media Production</p>
+                    <div class="p-2 sm:p-3 rounded-lg bg-gray-800/50 backdrop-blur-sm">
+                        <i class="fas fa-camera text-lg sm:text-xl text-orange-500 mb-1 sm:mb-2"></i>
+                        <p class="text-xs sm:text-sm text-gray-300">Media Production</p>
                     </div>
-                    <div class="p-4 rounded-lg bg-gray-800/50 backdrop-blur-sm">
-                        <i class="fas fa-bullhorn text-2xl text-orange-500 mb-2"></i>
-                        <p class="text-sm text-gray-300">Digital Marketing</p>
+                    <div class="p-2 sm:p-3 rounded-lg bg-gray-800/50 backdrop-blur-sm">
+                        <i class="fas fa-bullhorn text-lg sm:text-xl text-orange-500 mb-1 sm:mb-2"></i>
+                        <p class="text-xs sm:text-sm text-gray-300">Digital Marketing</p>
                     </div>
-                    <div class="p-4 rounded-lg bg-gray-800/50 backdrop-blur-sm">
-                        <i class="fas fa-lightbulb text-2xl text-orange-500 mb-2"></i>
-                        <p class="text-sm text-gray-300">Brand Strategy</p>
+                    <div class="p-2 sm:p-3 rounded-lg bg-gray-800/50 backdrop-blur-sm">
+                        <i class="fas fa-lightbulb text-lg sm:text-xl text-orange-500 mb-1 sm:mb-2"></i>
+                        <p class="text-xs sm:text-sm text-gray-300">Brand Strategy</p>
                     </div>
                 </div>
             </div>
 
-            <div class="relative lg:block" data-aos="fade-left">
-                <!-- Main image with modern styling -->
-                <div class="relative">
+            <!-- Image -->
+            <div class="relative mt-6 lg:mt-0 flex justify-center lg:justify-end">
+                <div class="relative w-full max-w-md sm:max-w-lg lg:max-w-xl">
                     <div class="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-transparent rounded-xl"></div>
                     <img src="https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg" 
                          alt="Trend-Crafters Creative Work" 
-                         class="rounded-xl shadow-2xl w-full object-cover"
-                         style="height: 600px;" loading="lazy">
-                </div>
-                
-                <!-- Floating elements -->
-                <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-orange-500/20 rounded-full blur-2xl"></div>
-                <div class="absolute -top-6 -right-6 w-32 h-32 bg-red-500/20 rounded-full blur-2xl"></div>
-                
-                <!-- Stats overlay -->
-                <div class="absolute bottom-8 left-8 right-8 bg-gray-900/90 backdrop-blur-sm rounded-lg p-6 shadow-xl border border-gray-800">
-                    <div class="grid grid-cols-3 gap-4 text-center">
-                        <div>
-                            <p class="text-2xl font-bold text-orange-500">50+</p>
-                            <p class="text-sm text-gray-400">Projects</p>
-                        </div>
-                        <div>
-                            <p class="text-2xl font-bold text-orange-500">30+</p>
-                            <p class="text-sm text-gray-400">Clients</p>
-                        </div>
-                        <div>
-                            <p class="text-2xl font-bold text-orange-500">5⭐</p>
-                            <p class="text-sm text-gray-400">Rating</p>
+                         class="shadow-2xl w-[600px] h-auto object-cover sm:h-64 md:h-80 lg:h-96 xl:h-[500px]"
+                         loading="lazy">
+
+                    <!-- Floating elements -->
+                    <div class="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 w-20 h-20 sm:w-28 sm:h-28 bg-orange-500/20 rounded-full blur-2xl"></div>
+                    <div class="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-20 h-20 sm:w-28 sm:h-28 bg-red-500/20 rounded-full blur-2xl"></div>
+
+                    <!-- Stats overlay -->
+                    <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-gray-900/90 backdrop-blur-sm rounded-lg p-3 sm:p-4 shadow-xl border border-gray-800">
+                        <div class="grid grid-cols-3 gap-2 sm:gap-4 text-center">
+                            <div>
+                                <p class="text-lg sm:text-xl font-bold text-orange-500">50+</p>
+                                <p class="text-xs sm:text-sm text-gray-400">Projects</p>
+                            </div>
+                            <div>
+                                <p class="text-lg sm:text-xl font-bold text-orange-500">30+</p>
+                                <p class="text-xs sm:text-sm text-gray-400">Clients</p>
+                            </div>
+                            <div>
+                                <p class="text-lg sm:text-xl font-bold text-orange-500">5⭐</p>
+                                <p class="text-xs sm:text-sm text-gray-400">Rating</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -137,23 +134,26 @@
             </div>
                 
             <!-- Video Section -->
-            <div class="flex flex-col justify-center video-parent px-4 sm:pt-16 sm:px-0 h-full" data-aos="fade-left">
-                <div class="relative rounded-lg transform hover:scale-105 transition-transform duration-700 w-full sm:w-[600px] h-80 sm:h-[500px] overflow-hidden video-container-mobile">
-                    <video 
-                        src="https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6At1Yu94l0cImtgxonQZfXuwqD1r4HvVkSPEW" 
-                        autoplay 
-                        muted 
-                        loop
-                        playsinline
-                        class="w-full h-full object-cover scale-y-125 translate-y-1" loading="lazy">
-                    </video>
-                </div>
-                
-                <!-- Text below the video -->
-                <div class="mt-4 text-gray-300 text-center">
-                    <h3 class="text-lg sm:text-xl font-semibold mb-2">🎬 Our Edit: Cinematic Journey and Lifestyle Shots</h3>
-                </div>
-            </div>
+<div class="flex flex-col justify-center items-center video-parent w-full h-auto py-10 sm:py-16" data-aos="fade-left">
+    <div class="relative pr-10 w-full max-w-6xl aspect-video overflow-hidden transform hover:scale-105 transition-transform duration-700">
+        <video 
+            src="https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6At1Yu94l0cImtgxonQZfXuwqD1r4HvVkSPEW" 
+            autoplay 
+            muted 
+            loop
+            playsinline
+            class="w-[600px] h-full object-cover scale-y-125 translate-y-1"
+            loading="lazy">
+        </video>
+    </div>
+    
+    <!-- Text below the video -->
+    <div class="mt-4 text-gray-300 text-center px-4 sm:px-0">
+        <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2">
+            🎬 Our Edit: Cinematic Journey and Lifestyle Shots
+        </h3>
+    </div>
+</div>
         </div>
     </div>
 </section>
@@ -179,7 +179,7 @@
                     <i class="fas fa-bullseye text-orange-400 text-xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-3">Content Strategy</h3>
-                <p class="text-gray-300 text-justify">We craft tailored content plans aligned with your brand goals to boost engagement and performance.</p>
+                <p class="text-gray-300 ">We craft tailored content plans aligned with your brand goals to boost engagement and performance.</p>
             </div>
 
             <!-- Service 2: Video & Reels Production -->
@@ -188,7 +188,7 @@
                     <i class="fas fa-video text-orange-400 text-xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-3">Video & Reels Production</h3>
-                <p class="text-gray-300 text-justify">High-quality story-driven videos, reels, and commercials designed to captivate and convert.</p>
+                <p class="text-gray-300">High-quality story-driven videos, reels, and commercials designed to captivate and convert.</p>
             </div>
 
             <!-- Service 3: Photo Shoot -->
@@ -197,7 +197,7 @@
                     <i class="fas fa-camera-retro text-orange-400 text-xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-3">Photo Shoot</h3>
-                <p class="text-gray-300 text-justify">Professional photography that highlights your products, team, and brand story with style.</p>
+                <p class="text-gray-300 ">Professional photography that highlights your products, team, and brand story with style.</p>
             </div>
 
             <!-- Service 4: Brand Campaigns -->
@@ -206,7 +206,7 @@
                     <i class="fas fa-rocket text-orange-400 text-xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mb-3">Brand Campaigns</h3>
-                <p class="text-gray-300 text-justify">Creative campaigns that amplify your brand, reach your audience, and leave a lasting impact.</p>
+                <p class="text-gray-300 ">Creative campaigns that amplify your brand, reach your audience, and leave a lasting impact.</p>
             </div>
 
             <!-- SEO Optimization -->
@@ -215,7 +215,7 @@
                 <i class="fas fa-search text-orange-400 text-2xl"></i>
               </div>
               <h3 class="text-xl font-semibold mb-3">SEO Optimization</h3>
-              <p class="text-gray-300 text-justify">Improve your search engine rankings and drive organic traffic to your website.</p>
+              <p class="text-gray-300 ">Improve your search engine rankings and drive organic traffic to your website.</p>
             </div>
 
             <!-- Social Media Marketing -->
@@ -226,7 +226,7 @@
                      class="h-6 w-6" loading="lazy">
               </div>
               <h3 class="text-xl font-semibold mb-3">Social Media Marketing</h3>
-              <p class="text-gray-300 text-justify">Engage with your audience and build brand awareness across all major social media platforms.</p>
+              <p class="text-gray-300 ">Engage with your audience and build brand awareness across all major social media platforms.</p>
             </div>
 
             <!-- Content Marketing -->
@@ -235,7 +235,7 @@
                     <img src="https://cdn-icons-png.flaticon.com/512/3022/3022440.png" alt="Content Marketing Icon" class="h-6 w-6" loading="lazy">
                 </div>
                 <h3 class="text-xl font-semibold mb-3">Content Marketing</h3>
-                <p class="text-gray-300 text-justify">Create compelling content that resonates with your target audience.</p>
+                <p class="text-gray-300 ">Create compelling content that resonates with your target audience.</p>
             </div>
         </div>
     </div>
@@ -289,24 +289,28 @@
         </div>
       </div>
 
-      <!-- Video Content -->
-      <div class="flex flex-col justify-center video-parent pt-16 px-4 sm:pt-20 sm:px-0 h-full" data-aos="fade-left">
-        <div class="relative rounded-lg transform hover:scale-105 transition-transform duration-700 w-full sm:w-[600px] h-64 sm:h-[400px] border overflow-hidden video-container-mobile">
-            <video 
-                src="https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6rAT3r6p0Bqw1lxtCXY9EMebkf2OcUyVgDjG6" 
-                autoplay
-                muted
-                loop
-                playsinline
-                class="w-full h-full object-cover" loading="lazy">
-            </video>
-        </div>
+   <!-- Video Content -->
+<div class="flex flex-col justify-center items-center video-parent w-full h-auto" data-aos="fade-left">
+  <div class="relative pr-10 border- w-full aspect-video rounded-none overflow-hidden transform hover:scale-105 transition-transform duration-700">
+      <video 
+          src="https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6rAT3r6p0Bqw1lxtCXY9EMebkf2OcUyVgDjG6" 
+          autoplay
+          muted
+          loop
+          playsinline
+          class="w-[600px] h-full object-cover"
+          loading="lazy">
+      </video>
+  </div>
 
-        <!-- Text below the video -->
-        <div class="mt-4 text-gray-300 text-center">
-            <h3 class="text-lg sm:text-xl font-semibold mb-2">🎬 Our Edit: Digital Marketing Spotlight</h3>
-        </div>
-      </div>
+  <!-- Text below the video -->
+  <div class="mt-4 text-gray-300 text-center px-2">
+      <h3 class="text-base sm:text-lg md:text-xl font-semibold mb-1 sm:mb-2">
+          🎬 Our Edit: Digital Marketing Spotlight
+      </h3>
+      <p class="text-sm sm:text-base text-gray-400">Showcasing creativity and performance with our latest marketing campaign.</p>
+  </div>
+</div>
     </div>
   </div>
 </section>

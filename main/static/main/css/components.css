@@ -1,27 +1,40 @@
 /* Mobile-specific styles */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .container, .w-full {
         padding-left: 1rem;
         padding-right: 1rem;
+        max-width: 100vw;
+        overflow-x: hidden;
     }
     
     /* Ensure images and videos don't cause overflow */
     img, video {
         max-width: 100%;
         height: auto;
+        object-fit: contain;
     }
     
-    /* Remove padding and margin for videos on mobile */
+    /* Fixed video containers for mobile */
     .video-container-mobile {
         padding: 0 !important;
         margin: 0 !important;
-        width: 100% !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
     }
     
     .video-container-mobile video {
         padding: 0 !important;
         margin: 0 !important;
         border-radius: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100vw !important;
+        object-fit: contain !important;
     }
     
     /* Adjust spacing for mobile */
@@ -41,6 +54,8 @@
     .video-parent {
         padding: 0 !important;
         margin: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
     }
     
     /* Fix text sizes for mobile */
@@ -68,6 +83,7 @@
     /* Project container mobile layout */
     .project-container:not(.expanded) {
         flex-direction: column;
+        margin: 0 1rem;
     }
     
     .project-container:not(.expanded) .project-video,
@@ -101,14 +117,23 @@
     }
 }
 
-@media (min-width: 768px) {
+/* Tablet and small desktop devices (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
     .content-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    .container, .w-full {
         padding-left: 2rem;
         padding-right: 2rem;
     }
     
     .project-container {
         flex-direction: row;
+        margin: 0 2rem;
     }
     
     .project-container .project-video {
@@ -124,17 +149,33 @@
     .close-button {
         display: none;
     }
+    
+    /* Video fixes for tablet */
+    .video-container-mobile video {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 400px !important;
+        object-fit: contain !important;
+    }
 }
 
+/* Desktop devices (1024px and above) */
 @media (min-width: 1024px) {
     .content-container {
+        padding-left: 4rem;
+        padding-right: 4rem;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    .container, .w-full {
         padding-left: 4rem;
         padding-right: 4rem;
     }
 }
 
 /* About Page Mobile Styles */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .hero-mobile {
         min-height: 50vh;
         padding-top: 2rem;
@@ -146,16 +187,18 @@
     }
     
     .ceo-text {
-        padding: 1rem 0;
+        padding: 1rem 1rem;
         order: 2;
     }
     
     .ceo-image-container {
         order: 1;
+        padding: 0 1rem;
     }
     
     .ceo-quote {
         padding-left: 1rem;
+        padding-right: 1rem;
     }
     
     .ceo-quote p {
@@ -179,6 +222,7 @@
     /* Service grid mobile */
     #services .grid {
         gap: 1rem;
+        padding: 0 1rem;
     }
     
     #services .service-item {
@@ -193,6 +237,7 @@
     .partner-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        padding: 0 1rem;
     }
     
     .partner-card img {
@@ -203,6 +248,7 @@
     .vision-mission-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        padding: 0 1rem;
     }
     
     .vision-card, .mission-card {
@@ -213,6 +259,7 @@
     .what-we-do-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        padding: 0 1rem;
     }
     
     .feature-card {
@@ -225,6 +272,7 @@
         text-align: justify;
         font-size: 0.95rem;
         line-height: 1.6;
+        padding: 0 1rem;
     }
     
     /* Reduce padding on mobile */
@@ -251,6 +299,28 @@
         width: 100% !important;
         height: 200px !important;
         object-fit: cover;
+    }
+}
+
+/* Tablet-specific styles for About Page */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .ceo-section .grid {
+        padding: 0 2rem;
+    }
+    
+    .ceo-text, .ceo-quote {
+        padding: 0 2rem;
+    }
+    
+    #services .grid,
+    .partner-grid,
+    .vision-mission-grid,
+    .what-we-do-grid {
+        padding: 0 2rem;
+    }
+    
+    .text-justify-mobile {
+        padding: 0 2rem;
     }
 }
 

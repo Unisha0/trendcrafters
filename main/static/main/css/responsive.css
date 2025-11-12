@@ -2,7 +2,8 @@
 .navbar {
     position: fixed;
     width: 100%;
-    z-index: 50;
+    /* increase stacking context so dropdown can appear above other page elements */
+    z-index: 9998;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid #e5e7eb;
@@ -96,20 +97,43 @@
     backdrop-filter: blur(10px);
 }
 
-/* Video containers */
+/* Video containers - Fixed for mobile */
 .video-container-mobile {
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
+    max-width: 100vw !important;
+    overflow: hidden !important;
 }
 
 .video-container-mobile video {
     padding: 0 !important;
     margin: 0 !important;
     border-radius: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100vw !important;
+    object-fit: contain !important;
 }
 
 .video-parent {
     padding: 0 !important;
     margin: 0 !important;
+    max-width: 100vw !important;
+    overflow: hidden !important;
+}
+
+/* Ensure desktop services dropdown is visible on hover even if some styles override Tailwind */
+.desktop-services-menu {
+    /* keep default hidden (Tailwind .hidden) but provide a safe fallback */
+    display: none;
+    /* ensure this menu stacks above everything else */
+    position: absolute;
+    z-index: 9999 !important;
+}
+
+/* If anything is preventing the Tailwind utility from taking effect, force visibility
+   when parent .group is hovered. This is a narrow, targeted override. */
+.navbar .group:hover > .desktop-services-menu {
+    display: block !important;
 }

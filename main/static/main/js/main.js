@@ -60,4 +60,50 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check on load and resize
     checkOverflow();
     window.addEventListener('resize', checkOverflow);
+    
+    // Desktop Services dropdown: position dropdown outside any stacking contexts
+    // This moves the dropdown visually using fixed positioning so it appears above overlays
+    function initDesktopDropdowns() {
+        const groups = document.querySelectorAll('.relative.group');
+        groups.forEach(group => {
+            const dropdown = group.querySelector('.desktop-services-menu');
+            const trigger = group.querySelector('a');
+            if (!dropdown || !trigger) return;
+
+            // Make sure dropdown is hidden by default; JS will handle visibility
+            dropdown.style.display = 'none';
+
+            let isVisible = false;
+
+            function positionDropdown() {
+                const rect = trigger.getBoundingClientRect();
+                // position fixed so it's outside parent stacking contexts
+                dropdown.style.position = 'fixed';
+                dropdown.style.left = Math.max(8, rect.left) + 'px';
+                dropdown.style.top = (rect.bottom + 6) + 'px';
+                // ensure dropdown is at least as wide as trigger or w-48 (192px)
+                const minW = Math.max(rect.width, 192);
+                dropdown.style.minWidth = minW + 'px';
+                dropdown.style.zIndex = '100000';
+            }
+
+            function showDropdown() {
+                if (window.innerWidth < 768) return; // only desktop
+                positionDropdown();
+                dropdown.style.display = 'block';
+                isVisible = true;
+            }
+
+            function hideDropdown() {
+                dropdown.style.display = 'none';
+                isVisible = false;
+            }
+
+            group.addEventListener('mouseenter', showDropdown);
+            group.addEventListener('mouseleave', hideDropdown);
+            window.addEventListener('resize', () => { if (isVisible) positionDropdown(); });
+        });
+    }
+
+    initDesktopDropdowns();
 });
