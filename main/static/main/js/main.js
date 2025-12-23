@@ -107,3 +107,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initDesktopDropdowns();
 });
+
+// snowLayer snow effect 
+
+  const snowLayer = document.getElementById("snow-layer");
+  const snowCount = window.innerWidth < 768 ? 30 : 60;
+
+  for (let i = 0; i < snowCount; i++) {
+    const snowflake = document.createElement("div");
+    snowflake.className = "snowflake";
+    snowflake.innerHTML = "❄";
+
+    snowflake.style.left = Math.random() * 100 + "vw";
+    snowflake.style.animationDuration = 3 + Math.random() * 5 + "s";
+    snowflake.style.opacity = Math.random();
+    snowflake.style.fontSize = 10 + Math.random() * 14 + "px";
+
+    snowLayer.appendChild(snowflake);
+  }

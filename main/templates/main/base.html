@@ -63,12 +63,92 @@
   ]
 }
 </script>
+<style>
+/* ===============================
+   ❄ ADVANCED REAL SNOW (CANVAS)
+================================ */
+#snow-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+</style>
+
+
+<style>
+/* 🎄 Merry Christmas Slide & Sparkle */
+.merry-text {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Dancing Script', cursive;
+  font-size: 6rem;
+  color: #FFD700;
+  text-align: center;
+  z-index: 10000;
+  opacity: 0;
+  white-space: nowrap;
+  letter-spacing: 4px;
+  animation: slideIn 2s ease-out forwards, sparkle 1.5s infinite;
+}
+
+.lights {
+  display: inline-block;
+  animation: flicker 1.2s infinite alternate;
+}
+
+/* Slide in from left + right */
+@keyframes slideIn {
+  0% { transform: translateX(-150%) rotate(-15deg); opacity: 0; }
+  50% { transform: translateX(10%) rotate(5deg); opacity: 1; }
+  100% { transform: translateX(-50%) rotate(0deg); opacity: 1; }
+}
+
+/* Sparkle effect */
+@keyframes sparkle {
+  0%, 100% { text-shadow: 0 0 10px #fff, 0 0 20px #FFD700, 0 0 30px #FF8C00; }
+  50% { text-shadow: 0 0 20px #fff, 0 0 30px #FFD700, 0 0 40px #FF4500; }
+}
+
+/* Lights flicker */
+@keyframes flicker {
+  0%, 100% { transform: scale(1); opacity: 1; color: #FF0000; }
+  25% { transform: scale(1.2); opacity: 0.8; color: #00FF00; }
+  50% { transform: scale(0.9); opacity: 0.6; color: #FFFF00; }
+  75% { transform: scale(1.1); opacity: 0.9; color: #00FFFF; }
+}
+
+/* Fade out after 10 seconds */
+.merry-text.hide {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; transform: translateX(-50%) scale(0.8) rotate(-10deg); }
+}
+
+/* Responsive font size */
+@media (max-width: 768px) {
+  .merry-text { font-size: 3.5rem; }
+}
+
+/* Optional: Google Fonts */
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
     {% block extra_css %}{% endblock %}
 </head>
 <body class="font-sans bg-gray-900 text-white">
+
+    <!-- Snow Layer -->
+    <canvas id="snow-canvas"></canvas>
+
     <!-- Navigation -->
+     
     <nav class="navbar">
+        
         <div class="container mx-auto px-4 sm:px-6 lg:px-5">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center space-x-2">
@@ -218,6 +298,92 @@
     <script src="{% static 'main/js/main.js' %}"></script>
     <script src="{% static 'main/js/animations.js' %}"></script>
     <script src="{% static 'main/js/mobile.js' %}"></script>
+
+    <script>
+(() => {
+  const canvas = document.getElementById("snow-canvas");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+
+  let width, height;
+  const flakes = [];
+  const isMobile = window.innerWidth < 768;
+  const FLAKE_COUNT = isMobile ? 120 : 220;
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener("resize", resize);
+  resize();
+
+  class Snowflake {
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * -height;
+      this.radius = Math.random() * 1.8 + 0.6;
+      this.speedY = Math.random() * 1.2 + 0.6;
+      this.speedX = Math.random() * 0.6 - 0.3;
+      this.opacity = Math.random() * 0.6 + 0.3;
+      this.blur = Math.random() > 0.7 ? 1.2 : 0;
+    }
+
+    update() {
+      this.y += this.speedY;
+      this.x += this.speedX;
+
+      if (this.y > height) this.reset();
+      if (this.x > width || this.x < 0) {
+        this.x = Math.random() * width;
+      }
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255,255,255,${this.opacity})`;
+      ctx.shadowBlur = this.blur;
+      ctx.shadowColor = "white";
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function init() {
+    flakes.length = 0;
+    for (let i = 0; i < FLAKE_COUNT; i++) {
+      flakes.push(new Snowflake());
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    flakes.forEach(flake => {
+      flake.update();
+      flake.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+
+  init();
+  animate();
+})();
+</script>
+
+<script>
+const merry = document.getElementById('merry-christmas');
+
+// Hide after 10 seconds
+setTimeout(() => {
+  merry.classList.add('hide');
+}, 2500); // 10 seconds
+</script>
+
 
     {% block extra_js %}{% endblock %}
 </body>
