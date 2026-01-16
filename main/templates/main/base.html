@@ -46,9 +46,13 @@
     <meta name="twitter:description" content="{% block twitter_description %}Trend Crafters Global provides digital marketing, professional photoshoots, cinematic video shoots, brand endorsement campaigns, commercial ads, brand storytelling, content strategy, and web development services in Nepal and worldwide. Creative, professional, and result-driven solutions for your brand.{% endblock %}">
     <meta name="twitter:image" content="{% block twitter_image %}{% static 'main/og-default.svg' %}{% endblock %}">
 
-        <!-- Favicon / Browser Tab Icon (local static files) -->
-        <link rel="icon" href="{% static 'main/favicon.svg' %}">
-        <link rel="apple-touch-icon" href="{% static 'main/apple-touch-icon.svg' %}">
+    <!-- Favicon / Browser Tab Icon (local static files) -->
+    <!-- Primary favicon (PNG/ICO). Place your logo at main/static/images/favicon.png or favicon.ico -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon.png' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'main/apple-touch-icon.svg' %}">
+    <!-- Legacy SVG fallback retained -->
+    <link rel="icon" href="{% static 'main/favicon.svg' %}">
 
         <!-- Schema: Organization (can be extended per-page) -->
         <script type="application/ld+json">
