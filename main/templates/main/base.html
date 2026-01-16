@@ -35,16 +35,16 @@
         <!-- Open Graph (defaults, pages can override) -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}">
-        <meta property="og:title" content="{% block og_title %}{% block title %}TrendCrafters - Digital Marketing Agency{% endblock %}{% endblock %}">
-        <meta property="og:description" content="{% block og_description %}{% block meta_description %}{% endblock %}{% endblock %}">
-        <meta property="og:image" content="{% block og_image %}{% static 'main/og-default.svg' %}{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}TrendCrafters - Digital Marketing Agency{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Trend Crafters Global provides digital marketing, professional photoshoots, cinematic video shoots, brand endorsement campaigns, commercial ads, brand storytelling, content strategy, and web development services in Nepal and worldwide. Creative, professional, and result-driven solutions for your brand.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'main/og-default.svg' %}{% endblock %}">
 
         <!-- Twitter / X Preview -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="{% block twitter_url %}{{ request.build_absolute_uri }}{% endblock %}">
-        <meta name="twitter:title" content="{% block twitter_title %}{% block og_title %}{% endblock %}{% endblock %}">
-        <meta name="twitter:description" content="{% block twitter_description %}{% block og_description %}{% endblock %}{% endblock %}">
-        <meta name="twitter:image" content="{% block twitter_image %}{% block og_image %}{% endblock %}{% endblock %}">
+    <meta name="twitter:title" content="{% block twitter_title %}TrendCrafters - Digital Marketing Agency{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Trend Crafters Global provides digital marketing, professional photoshoots, cinematic video shoots, brand endorsement campaigns, commercial ads, brand storytelling, content strategy, and web development services in Nepal and worldwide. Creative, professional, and result-driven solutions for your brand.{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{% static 'main/og-default.svg' %}{% endblock %}">
 
         <!-- Favicon / Browser Tab Icon (local static files) -->
         <link rel="icon" href="{% static 'main/favicon.svg' %}">
