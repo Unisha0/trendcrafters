@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO: allow indexing by default (override per-page if needed) -->
+    <meta name="robots" content="index,follow">
     <title>{% block title %}TrendCrafters - Digital Marketing Agency{% endblock %}</title>
     
     <!-- Tailwind CSS -->
@@ -61,7 +63,7 @@
             "@type": "Organization",
             "name": "Trend Crafters Global",
             "url": "https://trendcrafters.global/",
-            "logo": "{% block org_logo %}https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6pHMeQn8sT2fJSUNuCrFDORIybgi6t7Q3q1xB{% endblock %}",
+        "logo": "{% block org_logo %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo.png' %}{% endblock %}",
             "sameAs": [
                 "https://www.facebook.com/",
                 "https://www.instagram.com/",
