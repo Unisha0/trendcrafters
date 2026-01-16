@@ -24,45 +24,47 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <!-- Primary SEO -->
-<title>Digital Marketing, Photoshoot, Video Shoot, Web Development & Brand Endorsement | Nepal & Worldwide</title>
+        <!-- Primary SEO (overridable blocks) -->
+        <meta name="description" content="{% block meta_description %}Trend Crafters Global provides digital marketing, professional photoshoots, cinematic video shoots, brand endorsement campaigns, commercial ads, brand storytelling, content strategy, and web development services in Nepal and worldwide. Creative, professional, and result-driven solutions for your brand.{% endblock %}">
 
-<meta name="description" content="Trend Crafters Global provides digital marketing, professional photoshoots, cinematic video shoots, brand endorsement campaigns, commercial ads, brand storytelling, content strategy, and web development services in Nepal and worldwide. Creative, professional, and result-driven solutions for your brand.">
+        <meta name="keywords" content="{% block meta_keywords %}digital marketing Nepal, photoshoot services Nepal, video production, brand endorsement, web development{% endblock %}">
 
-<meta name="keywords" content="digital marketing Nepal, best digital marketing agency Nepal, photoshoot services Nepal, video shoot Nepal, brand endorsement Nepal, commercial ads Nepal, creative agency Nepal, content strategy Nepal, brand storytelling Nepal, web development Nepal, website development company Nepal, global digital marketing agency, international brand marketing, advertising agency Nepal, social media marketing Nepal, creative studio Nepal, corporate video Nepal, product photoshoot Nepal, ecommerce photoshoot Nepal, production house Nepal, video editing Nepal, marketing agency worldwide, branding agency Nepal, digital branding Nepal">
+        <!-- Canonical - pages can override -->
+        <link rel="canonical" href="{% block canonical %}{{ request.build_absolute_uri }}{% endblock %}">
 
-<!-- Open Graph (Facebook, WhatsApp, LinkedIn, Instagram) -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://trendcrafters.global/">
-<meta property="og:title" content="Trend Crafters Global – Digital Marketing, Photoshoot, Video Shoot, Branding & Web Development">
-<meta property="og:description" content="Expert digital marketing, photoshoots, video shoots, brand endorsements, commercial ads, content strategy, brand storytelling & web development services. Based in Nepal, serving worldwide.">
-<meta property="og:image" content="https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6pHMeQn8sT2fJSUNuCrFDORIybgi6t7Q3q1xB">
+        <!-- Open Graph (defaults, pages can override) -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}">
+        <meta property="og:title" content="{% block og_title %}{% block title %}TrendCrafters - Digital Marketing Agency{% endblock %}{% endblock %}">
+        <meta property="og:description" content="{% block og_description %}{% block meta_description %}{% endblock %}{% endblock %}">
+        <meta property="og:image" content="{% block og_image %}{% static 'main/og-default.svg' %}{% endblock %}">
 
-<!-- Twitter / X Preview -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://trendcrafters.global/">
-<meta property="twitter:title" content="Trend Crafters Global – Creative Digital & Branding Services">
-<meta property="twitter:description" content="Digital marketing, creative production, brand endorsement, ads, storytelling & web development services in Nepal and worldwide.">
-<meta property="twitter:image" content="https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6pHMeQn8sT2fJSUNuCrFDORIybgi6t7Q3q1xB">
+        <!-- Twitter / X Preview -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="{% block twitter_url %}{{ request.build_absolute_uri }}{% endblock %}">
+        <meta name="twitter:title" content="{% block twitter_title %}{% block og_title %}{% endblock %}{% endblock %}">
+        <meta name="twitter:description" content="{% block twitter_description %}{% block og_description %}{% endblock %}{% endblock %}">
+        <meta name="twitter:image" content="{% block twitter_image %}{% block og_image %}{% endblock %}{% endblock %}">
 
-<!-- Favicon / Browser Tab Icon -->
-<link rel="icon" type="image/png" href="https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6pHMeQn8sT2fJSUNuCrFDORIybgi6t7Q3q1xB">
+        <!-- Favicon / Browser Tab Icon (local static files) -->
+        <link rel="icon" href="{% static 'main/favicon.svg' %}">
+        <link rel="apple-touch-icon" href="{% static 'main/apple-touch-icon.svg' %}">
 
-<!-- Schema for Google Logo Visibility -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Trend Crafters Global",
-  "url": "https://trendcrafters.global/",
-  "logo": "https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6pHMeQn8sT2fJSUNuCrFDORIybgi6t7Q3q1xB",
-  "sameAs": [
-    "https://www.facebook.com/",
-    "https://www.instagram.com/",
-    "https://www.linkedin.com/"
-  ]
-}
-</script>
+        <!-- Schema: Organization (can be extended per-page) -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Trend Crafters Global",
+            "url": "https://trendcrafters.global/",
+            "logo": "{% block org_logo %}https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6pHMeQn8sT2fJSUNuCrFDORIybgi6t7Q3q1xB{% endblock %}",
+            "sameAs": [
+                "https://www.facebook.com/",
+                "https://www.instagram.com/",
+                "https://www.linkedin.com/"
+            ]
+        }
+        </script>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
     {% block extra_css %}{% endblock %}
@@ -77,8 +79,9 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-5">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center space-x-2">
-                    <a href="{% url 'index' %}">
+                    <a href="{% url 'index' %}" class="flex items-center">
                         <img src="https://qqazonq8eu.ufs.sh/f/y5kFsPOhkGJ6FdmN72fLXlSO27gtJBnqy9Dd8acQiuIW3YHx" alt="TrendCrafters Logo" class="h-24 w-30" loading="lazy">
+                        <span class="hidden md:inline-block text-white font-semibold ml-3">trendcrafters.global</span>
                     </a>
                 </div>
                 <!-- Desktop menu -->
