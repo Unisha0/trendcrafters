@@ -39,19 +39,19 @@
         <meta property="og:url" content="{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}">
     <meta property="og:title" content="{% block og_title %}TrendCrafters - Digital Marketing Agency{% endblock %}">
     <meta property="og:description" content="{% block og_description %}Trend Crafters Global provides digital marketing, professional photoshoots, cinematic video shoots, brand endorsement campaigns, commercial ads, brand storytelling, content strategy, and web development services in Nepal and worldwide. Creative, professional, and result-driven solutions for your brand.{% endblock %}">
-    <meta property="og:image" content="{% block og_image %}{% static 'images/og-image.png' %}{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'main/images/og-image.png' %}{% endblock %}">
 
         <!-- Twitter / X Preview -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="{% block twitter_url %}{{ request.build_absolute_uri }}{% endblock %}">
     <meta name="twitter:title" content="{% block twitter_title %}TrendCrafters - Digital Marketing Agency{% endblock %}">
     <meta name="twitter:description" content="{% block twitter_description %}Trend Crafters Global provides digital marketing, professional photoshoots, cinematic video shoots, brand endorsement campaigns, commercial ads, brand storytelling, content strategy, and web development services in Nepal and worldwide. Creative, professional, and result-driven solutions for your brand.{% endblock %}">
-    <meta name="twitter:image" content="{% block twitter_image %}{% static 'images/og-image.png' %}{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{% static 'main/images/og-image.png' %}{% endblock %}">
 
     <!-- Favicon / Browser Tab Icon (local static files) -->
     <!-- Primary favicon (PNG/ICO). Place your logo at main/static/images/favicon.png or favicon.ico -->
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon.png' %}">
-    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'main/images/favicon.png' %}">
+    <link rel="shortcut icon" href="{% static 'main/images/favicon.png' %}">
     <link rel="apple-touch-icon" href="{% static 'main/apple-touch-icon.svg' %}">
     <!-- Legacy SVG fallback retained -->
     <link rel="icon" href="{% static 'main/favicon.svg' %}">
@@ -63,7 +63,7 @@
             "@type": "Organization",
             "name": "Trend Crafters Global",
             "url": "https://trendcrafters.global/",
-        "logo": "{% block org_logo %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo.png' %}{% endblock %}",
+    "logo": "{% block org_logo %}{{ request.scheme }}://{{ request.get_host }}{% static 'main/images/logo.png' %}{% endblock %}",
             "sameAs": [
                 "https://www.facebook.com/",
                 "https://www.instagram.com/",
