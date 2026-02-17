@@ -25,6 +25,14 @@ ALLOWED_HOSTS = config(
     default='localhost,127.0.0.1,trendcrafters.global,www.trendcrafters.global'
 ).split(',')
 
+# During local development it's convenient to allow all hosts when DEBUG is True
+# so accessing the dev server via LAN IPs (e.g. 192.168.x.x) works without raising
+# DisallowedHost. In production DEBUG should be False and ALLOWED_HOSTS should be
+# set explicitly via environment variables.
+if DEBUG:
+    # Allow any host in development only
+    ALLOWED_HOSTS = ['*']
+
 CSRF_TRUSTED_ORIGINS = [
     'https://trendcrafters.global',
     'https://www.trendcrafters.global',
