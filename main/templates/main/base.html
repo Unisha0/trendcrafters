@@ -187,8 +187,11 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="space-y-4">
-                    <img src="{% static 'main/images/logo.png' %}" alt="TrendCrafters Logo" class="h-10 sm:h-14 w-auto mb-2" loading="lazy">
-                    <p class="text-gray-400">Crafting Stories, Creating Impact.</p>
+                    <!-- Larger transparent logo next to the slogan -->
+                    <div class="flex flex-col md:flex-row md:items-center md:space-x-6">
+                        <img src="{% static 'main/images/logo_transparent.png' %}" alt="TrendCrafters Logo" class="h-20 sm:h-28 w-auto mb-2 md:mb-0" loading="lazy">
+                        <p class="text-gray-400 text-lg md:text-xl">Crafting Stories, Creating Impact.</p>
+                    </div>
                     <div class="flex space-x-4">
                         <a href="https://www.tiktok.com/@trendcraftersglobal?_r=1&_t=ZS-91hN5vCD4rs" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok"></i></a>
                         <a href="https://www.instagram.com/trendcraftersglobal/" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
