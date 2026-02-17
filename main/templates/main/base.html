@@ -39,7 +39,10 @@
         <meta property="og:url" content="{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}">
     <meta property="og:title" content="{% block og_title %}TrendCrafters - Digital Marketing Agency{% endblock %}">
     <meta property="og:description" content="{% block og_description %}Trend Crafters Global provides digital marketing, professional photoshoots, cinematic video shoots, brand endorsement campaigns, commercial ads, brand storytelling, content strategy, and web development services in Nepal and worldwide. Creative, professional, and result-driven solutions for your brand.{% endblock %}">
-    <meta property="og:image" content="{% block og_image %}{% static 'main/images/og-image.png' %}{% endblock %}">
+        <!-- Prefer a large OG image; fall back to logo if og-image.png is not provided -->
+        <meta property="og:image" content="{% block og_image %}{% static 'main/images/og-image.png' %}{% endblock %}">
+        <meta property="og:image:alt" content="TrendCrafters Logo and preview image">
+        <meta name="image" content="{% static 'main/images/og-image.png' %}">
 
         <!-- Twitter / X Preview -->
         <meta name="twitter:card" content="summary_large_image">
@@ -57,6 +60,8 @@
     <link rel="apple-touch-icon" href="{% static 'main/apple-touch-icon.svg' %}">
     <!-- Legacy SVG fallback retained -->
     <link rel="icon" href="{% static 'main/favicon.svg' %}">
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#ffffff">
 
         <!-- Schema: Organization (can be extended per-page) -->
         <script type="application/ld+json">
@@ -73,6 +78,10 @@
             ]
         }
         </script>
+
+        <!-- Preconnect for Google fonts to speed up font loading -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
     {% block extra_css %}{% endblock %}

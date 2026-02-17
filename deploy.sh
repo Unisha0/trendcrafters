@@ -34,6 +34,8 @@ python manage.py migrate --noinput
 echo "Collecting static files..."
 python manage.py collectstatic --noinput
 
+echo "Note: Ensure your nginx serves the path configured in STATIC_ROOT and that permissions are correct."
+
 echo "Restarting application services (update service names if necessary)..."
 if systemctl list-units --type=service --all | grep -q "$GUNICORN_SERVICE"; then
   sudo systemctl restart "$GUNICORN_SERVICE"
