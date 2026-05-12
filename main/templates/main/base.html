@@ -8,7 +8,7 @@
     <title>{% block title %}TrendCrafters - Digital Marketing Agency{% endblock %}</title>
 
     {% load static %}
-    <link rel="preload" as="image" href="{% static 'main/images/logo_transparent_black.png' %}" fetchpriority="high">
+    <link rel="preload" as="image" href="{% static 'main/images/logo-navbar.webp' %}" fetchpriority="high">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -127,12 +127,8 @@
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center space-x-2">
                     <a href="{% url 'index' %}" class="flex items-center">
-                        <!-- logo-img class + eager + explicit dims: prevents layout shift (CLS) and FOUC.
-                             width/height encode the 1:1 aspect ratio of the logo (2082×2082 px source);
-                             the browser uses them for space reservation even though CSS controls the
-                             rendered size (h-16/sm:h-24). Using the sm breakpoint value (96) is fine
-                             because any equal width=height gives the correct 1:1 ratio. -->
-                        <img src="{% static 'main/images/logo_transparent_black.png' %}"
+                        <!-- Dedicated lightweight navbar logo asset for faster first paint. -->
+                        <img src="{% static 'main/images/logo-navbar.webp' %}"
                              alt="Trend Crafters Global Logo"
                              class="logo-img h-16 sm:h-24 w-auto"
                              loading="eager"
