@@ -145,7 +145,7 @@ trendcrafters/
 
 ## 👥 Team
 
-- **Developer:** Unisha ([@unisha0](https://github.com/unisha0))
+- **Developer:** Unisha Chaulagain ([@unisha0](https://github.com/unisha0))
 - **Company:** TrendCrafters
 - **Founded:** October 2025
 
