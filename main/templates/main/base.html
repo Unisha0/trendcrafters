@@ -12,12 +12,16 @@
 
     <!-- Critical CSS: stabilise navbar/logo before Tailwind CDN script injects styles.
          Prevents the visible layout shift (FOUC) where the logo appears oversized or
-         the navbar jumps in height on first paint. -->
+         the navbar jumps in height on first paint.
+         NOTE: keep the height values below in sync with the Tailwind classes on the
+         logo <img> (h-16 = 4rem at mobile, sm:h-24 = 6rem at ≥640 px). -->
     <style>
       .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 9998;
                 background: rgba(255,255,255,0.95); border-bottom: 1px solid #e5e7eb;
                 min-height: 5rem; }
-      .navbar .logo-img { height: 4rem; width: auto; display: block; }
+      /* h-16 = 4rem (mobile base) — matches Tailwind class on .logo-img */
+      .navbar .logo-img { height: 4rem; width: auto; display: block; aspect-ratio: 1; }
+      /* sm:h-24 = 6rem at ≥640 px — matches Tailwind responsive class */
       @media (min-width: 640px) { .navbar .logo-img { height: 6rem; } }
     </style>
 
@@ -109,7 +113,11 @@
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center space-x-2">
                     <a href="{% url 'index' %}" class="flex items-center">
-                        <!-- logo-img class + eager + explicit dims: prevents layout shift (CLS) and FOUC -->
+                        <!-- logo-img class + eager + explicit dims: prevents layout shift (CLS) and FOUC.
+                             width/height encode the 1:1 aspect ratio of the logo (2082×2082 px source);
+                             the browser uses them for space reservation even though CSS controls the
+                             rendered size (h-16/sm:h-24). Using the sm breakpoint value (96) is fine
+                             because any equal width=height gives the correct 1:1 ratio. -->
                         <img src="{% static 'main/images/logo_transparent_black.png' %}"
                              alt="Trend Crafters Global Logo"
                              class="logo-img h-16 sm:h-24 w-auto"
