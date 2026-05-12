@@ -6,6 +6,9 @@
     <!-- SEO: allow indexing by default (override per-page if needed) -->
     <meta name="robots" content="index,follow">
     <title>{% block title %}TrendCrafters - Digital Marketing Agency{% endblock %}</title>
+
+    {% load static %}
+    <link rel="preload" as="image" href="{% static 'main/images/logo_transparent_black.png' %}" fetchpriority="high">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,13 +23,24 @@
                 background: rgba(255,255,255,0.95); border-bottom: 1px solid #e5e7eb;
                 min-height: 5rem; }
       /* h-16 = 4rem (mobile base) — matches Tailwind class on .logo-img */
-      .navbar .logo-img { height: 4rem; width: auto; display: block; aspect-ratio: 1; }
+      .navbar .logo-img {
+        height: 4rem;
+        width: 4rem;
+        max-width: none;
+        display: block;
+        aspect-ratio: 1 / 1;
+        object-fit: contain;
+      }
       /* sm:h-24 = 6rem at ≥640 px — matches Tailwind responsive class */
-      @media (min-width: 640px) { .navbar .logo-img { height: 6rem; } }
+      @media (min-width: 640px) {
+        .navbar .logo-img {
+          height: 6rem;
+          width: 6rem;
+        }
+      }
     </style>
 
     <!-- Custom CSS -->
-    {% load static %}
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
     <link rel="stylesheet" href="{% static 'main/css/components.css' %}">
     <link rel="stylesheet" href="{% static 'main/css/responsive.css' %}">
@@ -123,6 +137,7 @@
                              class="logo-img h-16 sm:h-24 w-auto"
                              loading="eager"
                              fetchpriority="high"
+                             decoding="async"
                              width="96"
                              height="96">
                         <span class="sr-only">Trend Crafters Global</span>
@@ -256,7 +271,7 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Contact</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><i class="fas fa-map-marker-alt mr-2"></i> <a href="https://www.google.com/maps/place/Trend+Crafters,+Tempo+park,+Lalitpur+44600/@27.6537731,85.3491453,17z/data=!4m6!3m5!1s0x48bcab1a0c5ce29f:0xafc0486e73a4eb9d!8m2!3d27.6537731!4d85.3491453!16s%2Fg%2F11x5td3w51?utm_campaign=ml-ardi-airpe&g_ep=Eg1tbF8yMDI1MTAwOF8wIOC7DCoASAJQAQ%3D%3D" target="_blank">TempoPark, Gwarko, Lalitpur</a></li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> <a href="https://www.google.com/maps/place/Trend+Crafters,+Tempo+park,+Lalitpur+44600/@27.6537731,85.3491453,17z/data=!4m6!3m5!1s0x39eb1986c4c4bb9b:0x9519c44633fe2d8a!8m2!3d27.6537684!4d85.3517202!16s%2Fg%2F11wqh5hd8s?entry=ttu&g_ep=EgoyMDI1MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="hover:text-white">Tempo Park, Lalitpur, Nepal</a></li>
                         <li><i class="fas fa-phone mr-2"></i> <a href="tel:9863998413">9863998413</a></li>
                         <li><i class="fas fa-user mr-2"></i> Saksham Karki - CEO</li>
                     </ul>
@@ -269,7 +284,6 @@
     </footer>
 
     <!-- JavaScript -->
-    {% load static %}
     <script src="{% static 'main/js/main.js' %}"></script>
     <script src="{% static 'main/js/animations.js' %}"></script>
     <script src="{% static 'main/js/mobile.js' %}"></script>
