@@ -1,8 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Preload navbar logo: tells the browser to fetch the image immediately, before
+         the parser reaches the <img> tag in the body, eliminating the logo pop-in delay. -->
+    <link rel="preload" as="image" type="image/png" href="{% static 'main/images/logo_transparent_black.png' %}" fetchpriority="high">
     <!-- SEO: allow indexing by default (override per-page if needed) -->
     <meta name="robots" content="index,follow">
     <title>{% block title %}TrendCrafters - Digital Marketing Agency{% endblock %}</title>
@@ -26,7 +30,6 @@
     </style>
 
     <!-- Custom CSS -->
-    {% load static %}
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
     <link rel="stylesheet" href="{% static 'main/css/components.css' %}">
     <link rel="stylesheet" href="{% static 'main/css/responsive.css' %}">
