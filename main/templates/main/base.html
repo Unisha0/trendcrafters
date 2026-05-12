@@ -9,7 +9,18 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
+    <!-- Critical CSS: stabilise navbar/logo before Tailwind CDN script injects styles.
+         Prevents the visible layout shift (FOUC) where the logo appears oversized or
+         the navbar jumps in height on first paint. -->
+    <style>
+      .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 9998;
+                background: rgba(255,255,255,0.95); border-bottom: 1px solid #e5e7eb;
+                min-height: 5rem; }
+      .navbar .logo-img { height: 4rem; width: auto; display: block; }
+      @media (min-width: 640px) { .navbar .logo-img { height: 6rem; } }
+    </style>
+
     <!-- Custom CSS -->
     {% load static %}
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
@@ -72,9 +83,10 @@
             "url": "https://trendcrafters.global/",
     "logo": "{% block org_logo %}{{ request.scheme }}://{{ request.get_host }}{% static 'main/images/logo.png' %}{% endblock %}",
             "sameAs": [
-                "https://www.facebook.com/",
-                "https://www.instagram.com/",
-                "https://www.linkedin.com/"
+                "https://www.facebook.com/share/1BTcpCj6Y6/",
+                "https://www.instagram.com/trendcraftersglobal/",
+                "https://www.linkedin.com/company/trendcraftersglobal/about/",
+                "https://www.tiktok.com/@trendcraftersglobal"
             ]
         }
         </script>
@@ -97,8 +109,15 @@
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center space-x-2">
                     <a href="{% url 'index' %}" class="flex items-center">
-                        <img src="{% static 'main/images/logo_transparent_black.png' %}" alt="TrendCrafters Logo" class="h-16 sm:h-24 w-auto" loading="lazy">
-                        <span class="sr-only">TrendCrafters Global</span>
+                        <!-- logo-img class + eager + explicit dims: prevents layout shift (CLS) and FOUC -->
+                        <img src="{% static 'main/images/logo_transparent_black.png' %}"
+                             alt="Trend Crafters Global Logo"
+                             class="logo-img h-16 sm:h-24 w-auto"
+                             loading="eager"
+                             fetchpriority="high"
+                             width="96"
+                             height="96">
+                        <span class="sr-only">Trend Crafters Global</span>
                     </a>
                 </div>
                 <!-- Desktop menu -->

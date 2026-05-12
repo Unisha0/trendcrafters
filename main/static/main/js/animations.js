@@ -28,9 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
         video.setAttribute('loading', 'lazy');
     });
     
-    // Image lazy loading
+    // Image lazy loading — skip images already marked as eager (e.g. the navbar logo)
     const images = document.querySelectorAll('img');
     images.forEach(img => {
-        img.setAttribute('loading', 'lazy');
+        if (img.getAttribute('loading') !== 'eager') {
+            img.setAttribute('loading', 'lazy');
+        }
     });
 });
