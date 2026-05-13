@@ -1,0 +1,38 @@
+<!-- Image Optimization Template Fragment -->
+<!-- Use this snippet to replace img tags for responsive, optimized images -->
+
+{% comment %}
+Usage example:
+
+1. For portfolio/showcase images:
+   <picture>
+       <source srcset="{% static 'path/image.webp' %}" type="image/webp">
+       <img src="{% static 'path/image.jpg' %}" 
+            alt="Description"
+            loading="lazy"
+            decoding="async"
+            width="800"
+            height="600">
+   </picture>
+
+2. For hero/critical images (above the fold):
+   <img src="{% static 'path/image.jpg' %}"
+        alt="Description"
+        loading="eager"
+        fetchpriority="high"
+        width="1920"
+        height="1080"
+        decoding="async">
+
+3. For background images (use data attribute for lazy loading):
+   <div data-bg="{% static 'path/image.jpg' %}" 
+        class="h-96 bg-cover bg-center"></div>
+{% endcomment %}
+
+<!-- Preload critical hero images -->
+<link rel="preload" as="image" type="image/jpeg" href="{% static 'main/images/hero-bg.jpg' %}"
+      fetchpriority="high">
+
+<!-- Preconnect to image CDN if using external storage -->
+<link rel="preconnect" href="https://cdn.example.com" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.example.com">
