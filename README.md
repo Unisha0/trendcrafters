@@ -46,9 +46,6 @@ Production site:
 
 - https://trendcrafters.global/
 
-## Maintainer
-
-- [@Unisha0](https://github.com/Unisha0)
 
 ## License
 
